@@ -1,8 +1,12 @@
 package _kuy
 
 import (
+	"fmt"
+	"math"
 	"regexp"
+	"sort"
 	"strconv"
+	"strings"
 )
 
 func Quadratic(x1, x2 int) [3]int {
@@ -52,4 +56,51 @@ func Points_(games []string) int {
 		}
 	}
 	return points
+}
+
+func TwiceAsOld(dadYearsOld, sonYearsOld int) int {
+	var result int
+	if sonYearsOld*2 <= dadYearsOld {
+		result = dadYearsOld - (sonYearsOld * 2)
+	} else {
+		result = (sonYearsOld * 2) - dadYearsOld
+	}
+	return result
+}
+
+// TwiceAsOld_ Best practices
+func TwiceAsOld_(dadYearsOld int, sonYearsOld int) int {
+	return int(math.Abs(float64(dadYearsOld - (sonYearsOld * 2))))
+}
+
+func countSheep(num int) string {
+
+	var res string
+	for i := 1; i <= 3; i++ {
+		res += fmt.Sprintf("%v sheep...", i)
+	}
+	return res
+}
+
+// Best practices
+func countSheep_(num int) string {
+	var sb strings.Builder
+	for count := 1; count <= num; count++ {
+		fmt.Fprintf(&sb, "%d sheep...", count)
+	}
+
+	return sb.String()
+}
+
+func ExpressionMatter(a int, b int, c int) int {
+	var fs = math.Max(float64(a*(b+c)), float64(a*b*c))
+	var sc = math.Max(float64(a+b+c), float64((a+b)*c))
+	return int(math.Max(fs, sc))
+}
+
+// ExpressionMatter_ Best  practices
+func ExpressionMatter_(a int, b int, c int) int {
+	arr := []int{a * (b + c), a * b * c, a + b + c, (a + b) * c}
+	sort.Ints(arr)
+	return arr[len(arr)-1]
 }
