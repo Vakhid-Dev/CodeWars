@@ -104,3 +104,27 @@ func ExpressionMatter_(a int, b int, c int) int {
 	sort.Ints(arr)
 	return arr[len(arr)-1]
 }
+
+func multipleOfIndex(ints []int) []int {
+	var arr []int
+	for i := 1; i < len(ints); i++ {
+		if ints[i]%i == 0 {
+			arr = append(arr, ints[i])
+		}
+	}
+	return arr
+}
+
+func ToCsvText(array [][]int) string {
+	var str string
+	var mas []string
+	for i := 0; i < len(array); i++ {
+
+		for _, el := range array[i] {
+			str += fmt.Sprintf("%v,", el)
+		}
+		mas = append(mas, strings.TrimRight(str, ","))
+		str = ""
+	}
+	return strings.Join(mas, "\n")
+}
