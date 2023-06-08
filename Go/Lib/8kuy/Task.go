@@ -128,3 +128,19 @@ func ToCsvText(array [][]int) string {
 	}
 	return strings.Join(mas, "\n")
 }
+
+func FindMultiples(integer, limit int) []int {
+	var res []int
+	for i := integer; i <= limit; i += integer {
+		res = append(res, i)
+	}
+	return res
+}
+
+func Invert(arr []int) []int {
+	var res []int
+	for i := 0; i < len(arr); i++ {
+		res = append(res, arr[i]*(-1))
+	}
+	return res
+}
