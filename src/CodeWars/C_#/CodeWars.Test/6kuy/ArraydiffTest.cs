@@ -1,4 +1,5 @@
 ﻿using CodeWars.Lib._6kuy;
+using CodeWars.Lib._6kuy.Arrays;
 
 namespace CodeWars.Test._6kuy;
 
