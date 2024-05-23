@@ -5,21 +5,21 @@ public class CountIPAddresses
     public static long IpsBetween(string start, string end)
     {
        
-        var AList = start.Split('.').Select(int.Parse).ToList();
-        var BList = end.Split('.').Select(int.Parse).ToList();
-        var power = 3;
+        var AList = start.Split('.').Select(int.Parse).Reverse().ToList();
+        var BList = end.Split('.').Select(int.Parse).Reverse().ToList();
+        var power = 0;
         long sumA = 0; 
         long sumb = 0;
         foreach (var t in AList)
         {
             sumA += t * (long)Math.Pow(256, power);
-            --power;
+            ++power;
         }
-        power = 3;
+        power = 0;
         foreach (var t in BList)
         {
             sumb += t * (long)Math.Pow(256, power);
-            --power;
+            ++power;
         }
 
         return sumb - sumA;
