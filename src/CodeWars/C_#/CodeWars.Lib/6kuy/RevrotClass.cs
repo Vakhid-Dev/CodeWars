@@ -12,7 +12,6 @@ public class RevrotCLass
         .Select(chunk => chunk.Select(c => int.Parse(c.ToString())).ToList())
         .ToList();
         var builder = new StringBuilder();
-        // var chunks = GetChunks(strng, sz);
         foreach (var chunk in chunks)
         {
             var str = string.Concat(chunk);
